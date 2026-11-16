@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        button {
+            font-family: Verdana;
+            width: 200px;
+            padding: 10px;
+            background-color: #44AA99;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #00AA99;
+            }
+
+        #venLogo {
+            width: 300px;
+            height: 300px;
+            float: none;
+            margin: 10px;
+        }
+
+        #aboutBtn {
+            width: 60%;
+            padding: 10px;
+        }
+
+        .profWindow {
+            width: 0px; /* formerly 100% */
+            min-height: 144px;
+            padding: 20px;
+            background-color: #CFFF45;
+            border: 3px solid black;
+            border-radius: 12px;
+            vertical-align: top;
+            float: none;
+            display: none; /* remove this on the main site */
+        }
+
+        .venApp {
+            text-decoration: none;
+        }
+        .venAppImg {
+            width: 100px;
+            height: 100px;
+            padding: 0px 25px;
+        }
+        .apption { /* App Caption */
+            color: black;
+            max-width: 120px;
+            padding: 0px 15px;
+            text-align: center;
+            font-family: verdana;
+            font-size: 80%;
+        }
+            .apption:hover { /* App Caption */
+                color: maroon;
+            }
+            .apption:active { /* App Caption */
+                color: white;
+            }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #489000;
+            color: white;
+        }
+
+        @media screen and (min-width: 600px) {
+            body {
+                width: 900px;
+                margin: 0 auto;
+            }
+
+            #venLogo {
+                width: 300px;
+                margin: 10px;
+            }
+
+            #aboutBtn {
+                width: 250px;
+                padding: 10px;
+            }
+
+            .profWindow {
+                width: 450px;
+                height: 144px;
+                padding: 20px;
+                margin: 72px 0px;
+                background-color: #CFFF45;
+                border: 3px solid black;
+                border-radius: 8px;
+                vertical-align: top;
+                float: right;
+                display: inline-block;
+            }
+        }
+    </style>
+    <script src="/Venco.js"></script>
+    <title>RSVP Form</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <h1 id="pageTop" style="text-align:center">RSVP to the party!</h1>
+
+    <div style="display: none; width: 100%; min-height: 320px; vertical-align: top;">
+        <img id="venLogo" src="Venison_Logo.png" alt="Venison">
+        <div class="profWindow">
+            <p id="welcome">You are using Venison as: <b>Guest</b>.</p>
+            <!--<a href="/login/unavailable.html"><button>Login/Register</button></a>-->
+        </div>
+    </div>
+
+    <div style="display: none; justify-content: center">
+
+        <!--<form action="" method="POST">-->
+        <form id="guestForm">
+            <label for="guestName">Your Name:</label>
+            <input type="text" id="guestName" name="guestName" placeholder="Enter your name" required>
+            <label for="guestEmail">E-mail address:</label>
+            <input type="email" id="guestEmail" name="guestEmail" placeholder="Enter your e-mail" required>
+            <button type="submit">RSVP</button>
+        </form>
+
+        <!--<ul id="sheet-data">Enter your information</ul>-->
+
+        <script>
+            /*
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxMBSIn30oCy0qqRxZBmR_eVX0Dg5aMbZE9-W9SWzgXlNky9VxMfg3RzoSZOlHKTLjq4w/exec';
+            const guestForm = document.getElementById("guestForm");
+            var mainGuest = "";
+            var guestEmail = "";
+
+            guestForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(guestForm);
+
+                mainGuest = formData.get("guestName");
+                guestEmail = formData.get("guestEmail");
+            });
+            */
+            /*
+            fetch(scriptURL)
+                .then(response => response.json())
+                .then(data => {
+                    const list = document.getElementById('sheet-data');
+                    list.innerHTML = ''; // Clear loading text
+
+                    data.forEach(row => {
+                        //if (mainGuest == "") { continue; }
+                        const li = document.createElement('li');
+                        var att = row["Are you attending?"] == "Yes" ? 1 : row["Are you attending?"] == "No" ? -1 : 0;
+                        var guests = row["Who is attending?"].split("\n").filter(gName => gName !== "");
+                        var foodAlg = row["Are there any dietary restrictions for any guests that we should know of? (Optional)"];
+                        var comments = row["Leave any other questions or comments here."];
+                        li.style.whiteSpace = 'pre-line';
+                        li.style.fontFamily = 'Tahoma, sans-serif';
+                        li.textContent = `Guest: ${row["Your full name"]}\n`;
+                        li.textContent = `Your name: ${row["Your full name"]}\n`;
+                        li.textContent += `Email: ${row["Email Address"]}\n`;
+                        li.textContent += `Phone: ${row["Phone Number"]}\n\n`;
+                        li.textContent += `${att == 1 ? "YES - You're going.\n" : att == -1 ? "NO - You're not going.\n" : "MAYBE - You might go."}\n`;
+                        li.textContent += att < 0 ? "" : `Guests attending: ${row["How many people are attending?"]}/${guests.length}\n`;
+                        li.textContent += att < 0 ? "" : `${row["Who is attending?"]}\n\n`;
+                        li.textContent += att < 0 ? "" : `Dietary restrictions: ${foodAlg === "" ? "none" : foodAlg}\n\n`;
+                        li.textContent += comments === "" ? "" : `Other comments: ${comments}\n\n`;
+                        //guest warnings
+                        if (att >= 0) {
+                            const uniqueGuests = (arr) => new Set(guests).size !== guests.length;
+                            if (row["How many people are attending?"] !== guests.length) {
+                                li.textContent += "WARNING: the number provided on the form and the number on the guest list do not match.\n\n";
+                            } else if (!uniqueGuests) {
+                                li.textContent += "WARNING: duplicate guests detected!\n\n";
+                            } else if (!guests.includes(row["Your full name"])) {
+                                li.textContent += "WARNING: you need to include yourself in the count.\n\n";
+                            }
+                        }
+                        //li.textContent += "\n";
+
+                        if (mainGuest == row["Your full name"]) { list.appendChild(li); }
+
+                    });
+                    //list.hidden = true; // Or: element.style.display = "block";
+
+                })
+                .catch(error => console.error('Error fetching sheet data:', error));
+                */
+        </script>
+
+    </div>
+
+    <div style="justify-content:center">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd_2a716CmgxLzdEhUexQI8ps-lI_FzATSXtcUBbHcYE8efSw/viewform?embedded=true" title="RSVP Form" width="720" height="1120" frameborder="0" marginheight="0" marginwidth="0" style="display: block; margin: 0 auto;">Loading…</iframe>
+    </div>
+    <button type="button" onclick="ToHomePage()" style="font-size:150%;">Back</button>
+    <hr />
+
+
+    <div style="margin-top: 50px;"></div>
+    <footer>
+        <!-- <p><a href="/about.html" style="color:white"><i>About Venison</i></a></p> -->
+        <p style="font-size: 75%;">&copy; 2026 Venison. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

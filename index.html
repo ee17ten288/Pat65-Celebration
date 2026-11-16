@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        button {
+            font-family: Verdana;
+            width: 200px;
+            padding: 10px;
+            background-color: #44AA99;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #009966;
+            }
+
+        #pageTop {
+            font-family: 'Times New Roman';
+        }
+        #venLogo {
+            width: 300px;
+            height: 300px;
+            float: none;
+            margin: 10px;
+        }
+        #featurePhoto {
+            /*height: 100%;*/
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto;
+        }
+
+        #aboutBtn {
+            width: 60%;
+            padding: 10px;
+        }
+
+        .featurePhotoAlbum {
+            /* width: 0px; 
+            min-height: 144px;
+            padding: 20px;
+            background-color: #CFFF45;
+            border: 3px solid black;
+            border-radius: 12px;
+            vertical-align: top;
+            float: none;
+            display: none; */
+            text-align: center;
+            vertical-align: top;
+            height: 400px;
+            max-width: 100%;
+        }
+
+        .photoAlbum {
+            text-align: center;
+            vertical-align: top;
+            height: 400px;
+            max-width: 100%;
+        }
+
+        .venApp {
+            text-decoration: none;
+        }
+        .venAppImg {
+            width: 100px;
+            height: 100px;
+            padding: 0px 25px;
+        }
+        .apption { /* App Caption */
+            color: black;
+            max-width: 120px;
+            padding: 0px 15px;
+            text-align: center;
+            font-family: verdana;
+            font-size: 80%;
+        }
+            .apption:hover { /* App Caption */
+                color: maroon;
+            }
+            .apption:active { /* App Caption */
+                color: white;
+            }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #489000;
+            color: white;
+        }
+
+        @media screen and (min-width: 600px) {
+            body {
+                width: 900px;
+                margin: 0 auto;
+            }
+
+            #venLogo {
+                width: 300px;
+                margin: 10px;
+            }
+            #featurePhoto {
+                height: 100%;
+                max-height: 600px;
+            }
+
+            #aboutBtn {
+                width: 250px;
+                padding: 10px;
+            }
+
+            .featurePhotoAlbum {
+                text-align: center;
+                vertical-align: top;
+                height: 600px
+            }
+
+            .photoAlbum {
+                text-align: center;
+                vertical-align: top;
+                height: 600px
+            }
+        }
+    </style>
+    <script src="/Venco.js"></script>
+    <title>Pat Eigbe's 65th Celebration</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <h1 id="pageTop" style="text-align:center">You are cordially invited</h1>
+
+    <div style="display:none; width:100%; min-height:320px; vertical-align:top;">
+        <img id="venLogo" src="Venison_Logo.png" alt="Venison">
+        <div class="profWindow">
+            <p id="welcome">You are using Venison as: <b>Guest</b>.</p>
+        </div>
+    </div>
+
+    <div class="featurePhotoAlbum">
+        <!-- Feature Photo -->
+        <img id="featurePhoto" src="Pat65_savethedate.jpg" alt="Feature-Photo">
+    </div>
+
+
+    <div style="text-align: center; vertical-align: top;">
+        <!-- Intro -->
+        <p id="introPar">This page was made by Venison.<br><br>To reserve your spot, click on "RSVP"</p>
+        <button type="button" onclick="ReservForm()" style="width: 75%; font-size:300%; ">RSVP</button>
+        <p>To view the guest list, click on Guest List </p>
+        <button type="button" onclick="ForbiddenPage()" style="width: 75%; font-size:300%; ">Guest List</button>
+        <!-- <button type="button" onclick="ToGuestList()" style="width: 75%; font-size:300%; ">Guest List</button> -->
+    </div>
+
+    <div style="display: none; text-align: center; vertical-align: top;">
+        <!-- About -->
+        <!-- <p id="aboutPar">To learn more about Venison, click on "About" <br> You can also go to the About page by clicking on <i>About Venison</i> at the bottom of the page.</p> -->
+        <p id="aboutPar">To learn more about Venison, click on <i>About Venison</i> at the bottom of the page.</p>
+        <!--<button id="aboutBtn" type="button" onclick="AboutPage()" style="font-size:150%; ">About</button> -->
+        <p id="aboutPar">To go back to this page, click the <i>Home Page</i> button or on the Venison logo.</p>
+    </div>
+    <!--
+    <div>
+        <h2>Section 1</h2>
+    </div>
+    <div>
+        <h2>Section 2</h2>
+    </div>
+    -->
+    <div style="margin-top: 90px;"></div>
+    <div class="photoAlbum" style="text-align: center; vertical-align: top; max-height: 600px">
+        <!-- Images -->
+        <img style="max-height: 100%;" src="pat65_photo0.jpg" alt="pat65_photo0">
+    </div>
+    <div style="margin-top: 90px;"></div>
+    <footer>
+        <!-- <p><a href="/about.html" style="color:white"><i>About Venison</i></a></p> -->
+        <p style="font-size: 75%;">&copy; 2026 Venison. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
