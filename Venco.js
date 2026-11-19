@@ -1,19 +1,19 @@
 // JavaScript source code
 function ToHomePage() {
     //document.getElementById("introPar").innerHTML = "This button takes you home.";
-    window.location.href = "/";
+    window.location.href = "/Pat65-Celebration/";
 }
 function AboutPage() {
-    window.location.href = "/about.html";
+    window.location.href = "/Pat65-Celebration/about.html";
 }
 function RaiseErrorPage() {
-    window.location.href = "/error.html";
+    window.location.href = "/Pat65-Celebration/error.html";
 }
 function ForbiddenPage() {
-    window.location.href = "/forbidden.html";
+    window.location.href = "/Pat65-Celebration/forbidden.html";
 }
 function ReservForm() {
-    window.location.href = "/rsvp.html";
+    window.location.href = "/Pat65-Celebration/rsvp.html";
 }
 function ToGuestList() {
     //window.location.href = "";
